@@ -7,23 +7,26 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class TermAndCondsPage {
+public class TermsAndCondsPage {
     WebDriver driver;
 
-    public TermAndCondsPage(WebDriver driver) {
+    public TermsAndCondsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = "//div[@class='cajaTexto cajaTexto-sm']")
-    private List<WebElement> termAndConsBoxes;
+    private List<WebElement> termsAndConsBoxes;
 
     @FindBy(xpath = "//div[@class='col-sm-12 cajaTexto']")
-    private WebElement totalAmountTermAndCons;
+    private WebElement totalAmountTermsAndCons;
 
     @FindBy(id = "chkTC")
-    private WebElement checkBoxTermAndCons;
+    private WebElement checkBoxTermsAndCons;
 
     @FindBy(xpath = ".//a[@href='/ar/GroupLife/Step6']")
-    private WebElement previusPageTermAndConsButton;
+    private WebElement previusPageTermsAndConsButton;
+
+    @FindBy(id = "btnSummarySubmit")
+    private WebElement submitTermsAndConsButton;
 }

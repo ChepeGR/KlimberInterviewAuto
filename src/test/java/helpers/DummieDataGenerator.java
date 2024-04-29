@@ -3,7 +3,7 @@ package helpers;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DummieMailGenerator {
+public class DummieDataGenerator {
 
     public static String generateDummyEmail() {
         String dummyEmailPrefix = "dummiemail";
@@ -15,5 +15,10 @@ public class DummieMailGenerator {
         String dummyEmail = dummyEmailPrefix + datePart + domain;
 
         return dummyEmail;
+    }
+
+    public static String generateDummieDNI() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("ddHHmmss");
+        return dateFormat.format(new Date());
     }
 }

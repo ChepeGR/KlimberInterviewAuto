@@ -2,17 +2,16 @@ package tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import pages.HomePage;
+import pages.MedicalFormPage;
 
 public abstract class BaseTest {
-    private WebDriver driver;
+    protected WebDriver driver;
     protected HomePage homePage;
 
-    @BeforeClass
+    @BeforeSuite
     public void setUp() {
         //System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
         //driver.get(URL); XXXX
@@ -21,7 +20,6 @@ public abstract class BaseTest {
         driver.get("https://purchase-testing.klimber.com/ar/GroupLife/Index");
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
-
     }
 
 //    @AfterClass

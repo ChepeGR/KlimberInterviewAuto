@@ -1,7 +1,7 @@
 package pages;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,20 +16,18 @@ import java.util.List;
 public class HomePage {
     WebDriver driver;
 
-    //driver.get("https://purchase-testing.klimber.com/ar/GroupLife/Index");
-
-    //Personal data locators
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    // Personal data locators
 
     @FindBy(id = "BirthdayStep1")
     private WebElement birthDateInput;
 
     @FindBy(className = "dropdown")
     private WebElement accountDropdown;
-
 
     @FindBy(id = "select2-province-container")
     private WebElement dropdownProvince;
@@ -40,7 +38,7 @@ public class HomePage {
     @FindBy(id = "txtPhoneNumber")
     private WebElement phoneNumber;
 
-    //locators suma asegurada box
+    // Slider locators
 
     @FindBy(className = "slider-track")
     private WebElement sliderTrack;
@@ -55,7 +53,7 @@ public class HomePage {
     @FindBy(id = "suma_aseguradatotal")
     private WebElement securedAmmount;
 
-    //locators elegi tus coberturas adicionales
+    // Checkboxes area locators
 
     @FindBy(id = "chkDisability")
     private WebElement checkboxDisability;
@@ -72,11 +70,14 @@ public class HomePage {
     @FindBy(className = "monthlyPrice")
     private WebElement monthlyAmount;
 
-    @FindBy(id = "ex6SliderVal")
+    @FindBy(id = "btnSaveStep1")
     private WebElement submitButton;
 
     @FindBy(xpath = ".//input[@type='checkbox']")
     private List<WebElement> checkboxes;
+
+    @FindBy(className = "brighttheme-icon-closer")
+    private WebElement closeModalVerifyInfo;
 
 
     // Getters
@@ -153,9 +154,8 @@ public class HomePage {
     }
 
     public void moveSlider(){
-
         sliderTrack.click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Puedes ajustar el tiempo de espera según sea necesario
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElement(securedAmmount, "$ 0")));
 
     }
@@ -165,7 +165,7 @@ public class HomePage {
         actions.sendKeys(Keys.TAB).perform();
         actions.sendKeys(Keys.TAB).perform();
         actions.sendKeys(Keys.SPACE).perform();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Puedes ajustar el tiempo de espera según sea necesario
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElement(monthlyAmount, "$ 955")));
 
     }
@@ -173,7 +173,7 @@ public class HomePage {
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.TAB).perform();
         actions.sendKeys(Keys.SPACE).perform();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Puedes ajustar el tiempo de espera según sea necesario
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElement(monthlyAmount, "$ 1.184")));
 
     }
@@ -185,7 +185,18 @@ public class HomePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Puedes ajustar el tiempo de espera según sea necesario
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElement(monthlyAmount, "$ 1.413")));
     }
-    public void clickSubmitButton(){
+    public MedicalFormPage clickSubmitButton(){
+        closeModalVerifyInfo.click();
         submitButton.click();
+        return new MedicalFormPage(driver);
     }
+
+
+    public void awaitSpinnerDissapear(){
+        WebElement element = driver.findElement(By.id("ajaxSpinner"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        wait.until(ExpectedConditions.invisibilityOf(element));
+
+    }
+
 }
