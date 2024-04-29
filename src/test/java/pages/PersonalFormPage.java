@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.List;
@@ -53,12 +54,6 @@ public class PersonalFormPage {
     @FindBy(id = "Password")
     private WebElement passwordInput;
 
-    @FindBy(id = "PhoneCode")
-    private WebElement phoneCodeInput;
-
-    @FindBy(id = "PhoneNumber")
-    private WebElement phoneNumberInput;
-
     @FindBy(id = "select2-city-container")
     private WebElement cityInput;
 
@@ -81,9 +76,6 @@ public class PersonalFormPage {
     @FindBy(id = "select2-city-container")
     private WebElement cityDropdown;
 
-    @FindBy(id = "select2-province-container")
-    private WebElement provinceDropdown;
-
     @FindBy(id = "select2-country-container")
     private WebElement countryDropdown;
 
@@ -92,9 +84,6 @@ public class PersonalFormPage {
 
     @FindBy(id = "btnRegister")
     private WebElement nextPagePersonalFormButton;
-
-    @FindBy(id = "select2-Gender-result-cmzh-1")
-    private WebElement maleGender;
 
     public void nameInputWrite(String name){
         nameInput.click();
@@ -150,5 +139,8 @@ public class PersonalFormPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.attributeContains(cityInput, "title", "Barrio Emir Ramon Juarez"));
         nextPagePersonalFormButton.click();
+    }
+    public void previusPageButton(){
+        Assert.assertTrue(previusPagePersonalFormButton.isDisplayed());
     }
 }

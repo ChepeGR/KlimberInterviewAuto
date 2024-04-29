@@ -1,9 +1,11 @@
 package pages;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -29,4 +31,17 @@ public class TermsAndCondsPage {
 
     @FindBy(id = "btnSummarySubmit")
     private WebElement submitTermsAndConsButton;
+
+    @FindBy(id="frmSummary")
+    private WebElement userCreated;
+
+    public void clickTermsAndConsCheckBox(){
+        checkBoxTermsAndCons.click();
+    }
+    public void clickSubmitPageTermsAndCons(){
+        submitTermsAndConsButton.click();
+    }
+    public void congratsUserCreated(){
+        Assert.assertTrue(userCreated.isDisplayed());
+    }
 }

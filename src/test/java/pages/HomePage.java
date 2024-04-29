@@ -21,8 +21,6 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
-    // Personal data locators
-
     @FindBy(id = "BirthdayStep1")
     private WebElement birthDateInput;
 
@@ -37,8 +35,6 @@ public class HomePage {
 
     @FindBy(id = "txtPhoneNumber")
     private WebElement phoneNumber;
-
-    // Slider locators
 
     @FindBy(className = "slider-track")
     private WebElement sliderTrack;
@@ -80,72 +76,24 @@ public class HomePage {
     private WebElement closeModalVerifyInfo;
 
 
-    // Getters
-    public WebElement getBirthDateInput() {
-        return birthDateInput;
-    }
-
-    public WebElement getAccountDropdown() {
-        return accountDropdown;
-    }
-
-    public WebElement getDropdownProvince() {
-        return dropdownProvince;
-    }
-
     public WebElement getPhoneCode() {
         return phoneCode;
     }
 
-    public WebElement getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public WebElement getSliderTrack() {
-        return sliderTrack;
-    }
-
-    public WebElement getSecuredAmmount() {
-        return securedAmmount;
-    }
-
-    public WebElement getCheckboxDisability() {
-        return checkboxDisability;
-    }
-
-    public WebElement getCheckboxIllness() {
-        return checkboxIllness;
-    }
 
     public WebElement getSliderHanler() {
         return sliderHandler.get(1);
-    }
-
-    public WebElement getCheckboxAccident() {
-        return checkboxAccident;
-    }
-
-    public List<WebElement> getCheckboxesTextsAmount() {
-        return checkboxesTextsAmount;
-    }
-
-    public WebElement getMonthlyAmount() {
-        return monthlyAmount;
-    }
-
-    public WebElement getSubmitButton() {
-        return submitButton;
     }
 
     public void populateMiniForm(String birthDate, int option, String codePhone, String numberPhone){
         birthDateInput.click();
         birthDateInput.sendKeys(birthDate);
         dropdownProvince.click();
-        getProvinceOption(option).click(); //XXXX
-        getPhoneCode().click(); //XXXX
-        getPhoneCode().sendKeys(codePhone); //XXXX
+        getProvinceOption(option).click();
+        getPhoneCode().click();
+        getPhoneCode().sendKeys(codePhone);
         birthDateInput.sendKeys(Keys.TAB);
-        phoneNumber.sendKeys(numberPhone); //XXXX
+        phoneNumber.sendKeys(numberPhone);
 
     }
 

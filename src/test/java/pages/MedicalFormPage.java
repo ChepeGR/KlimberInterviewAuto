@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.List;
@@ -14,7 +15,6 @@ import java.util.List;
 public class MedicalFormPage {
     private WebDriver driver;
 
-    //Personal data locators XXXX
     public MedicalFormPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -30,6 +30,9 @@ public class MedicalFormPage {
 
     @FindBy(id = "txtWeight")
     private WebElement inputWeight;
+
+    @FindBy(className = "form-group")
+    private WebElement secondPageTitle;
 
     @FindBy (xpath = ".//input[@name = 'UnderwritingCustom[2].ResponseBool']")
     private  List<WebElement> radiosCheckBoxCovid;
@@ -56,7 +59,7 @@ public class MedicalFormPage {
         radiosCheckBoxTreatments.get(1).click();
     }
     public void typeInputHeight(String height) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Puedes ajustar el tiempo de espera según sea necesario
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(inputHeight));
         inputHeight.click();
         inputHeight.sendKeys(height);
@@ -85,6 +88,10 @@ public class MedicalFormPage {
         WebElement element =driver.findElement(By.id("divPageContainer"));
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         wait.until(ExpectedConditions.visibilityOf(element));
+        Assert.assertTrue(element.isDisplayed());
+    }
+    public void secondTitleMedicalPage(){
+        Assert.assertTrue(secondPageTitle.isDisplayed());
     }
 
 

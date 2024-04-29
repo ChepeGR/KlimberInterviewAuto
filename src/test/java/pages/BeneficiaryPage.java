@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class BeneficiaryPage {
     WebDriver driver;
@@ -13,10 +14,10 @@ public class BeneficiaryPage {
         PageFactory.initElements(driver, this);
     }
     @FindBy(id = "btnAddBeneficiaryNatural")
-    WebElement addBeneficiaryPersonButton;
+    private WebElement addBeneficiaryPersonButton;
 
     @FindBy(id = "btnAddBeneficiaryLegal")
-    WebElement addBeneficiaryOrgButton;
+    private WebElement addBeneficiaryOrgButton;
 
     @FindBy(xpath = ".//input[@name='Beneficiaries[0].Name']")
     private WebElement addBeneficiaryPersonInfoName;
@@ -26,9 +27,6 @@ public class BeneficiaryPage {
 
     @FindBy(xpath = ".//input[@name='Beneficiaries[0].IdNumber']")
     private WebElement addBeneficiaryPersonInfoIdNumber;
-
-    @FindBy(className = "selection")
-    private WebElement relationshipDropDown;
 
     @FindBy(xpath = ".//input[@name='Beneficiaries[0].DateDay']")
     private WebElement beneficiaryPersonInfoDateDay;
@@ -60,7 +58,15 @@ public class BeneficiaryPage {
     @FindBy(xpath = ".//input[@name='Beneficiaries[1].BeneficiaryPercentage']")
     private WebElement beneficiaryPersonInfoPercentageBeneficiaryPercentage;
 
+    @FindBy(xpath = ".//button[@type='submit']")
+    private WebElement beneficiaryPersonInfoSubmit;
 
+    public void clickSubmitBeneficiaryButton() {
+        beneficiaryPersonInfoSubmit.click();
+    }
+    public void addBeneficiaryPerson(){
+        Assert.assertTrue(addBeneficiaryPersonButton.isDisplayed());
+    }
 
 
 

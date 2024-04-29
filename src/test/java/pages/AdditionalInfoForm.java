@@ -10,9 +10,6 @@ import java.util.List;
 public class AdditionalInfoForm {
     WebDriver driver;
 
-    //driver.get("https://purchase-testing.klimber.com/ar/GroupLife/Index");
-
-    //Personal data locators
     public AdditionalInfoForm(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -25,28 +22,25 @@ public class AdditionalInfoForm {
     private List <WebElement> selectNationalityResult;
 
     @FindBy(id = "PlaceOfBirth")
-    WebElement placeOfBirthInput;
+    private WebElement placeOfBirthInput;
 
     @FindBy (xpath = ".//input[@name = 'HasCitizenship']")
     private List<WebElement> booleanHasCitizen;
 
     @FindBy(id = "txtOccupation")
-    WebElement occupationInput;
+    private WebElement occupationInput;
 
     @FindBy(id = "txtSalaryAnual")
-    WebElement salaryAnualInput;
+    private WebElement salaryAnualInput;
 
     @FindBy(id = "txtFullName")
-    WebElement spouseNameInput;
+    private WebElement spouseNameInput;
 
     @FindBy(id = "txtNumberId")
-    WebElement numberIdSpuseInput;
-
-    @FindBy(id = "chkExposedPerson")
-    WebElement exposedPersonCheckBox;
+    private WebElement numberIdSpuseInput;
 
     @FindBy(id = "select2-txtAnnualIncome-container")
-    WebElement annualIncomeCheckBox;
+    private WebElement annualIncomeCheckBox;
 
     @FindBy(className = "select2-results__option")
     private List<WebElement> selectPaymentOriginDropdown;
@@ -55,7 +49,7 @@ public class AdditionalInfoForm {
     private WebElement previusPageAdditionalInfoFormButton;
 
     @FindBy(id = "btnSaveInfo")
-    WebElement nextPageAdditionalInfoButton;
+    private WebElement nextPageAdditionalInfoButton;
 
     public void selectNationalityDropdown(){
         selectNationalityDropdown.click();
